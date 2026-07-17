@@ -27,4 +27,7 @@ class PostController extends Controller
         return view('posts.show',['post'=>$singlePost]);
 
     }
+    public function create(){
+        return view('posts.create');
+    }
 }
