@@ -30,4 +30,41 @@ class PostController extends Controller
     public function create(){
         return view('posts.create');
     }
+    public function store(){
+        //   $request=request();
+        //   dd($request->title, $request->all());
+
+        // first way to access the data from the request
+        // $data=request()->all();
+        // dd($data);
+
+// second way to access the data from the request
+
+        $title=request('title');
+        $description=request('description');
+        $posted_by=request('posted_by');
+        // dd($title,$description,$posted_by);  
+        
+        return to_route('posts.index');
+    }
+    public function edit(){
+
+          $post=request('post');
+       return view('posts.edit');
+    }
+    public function update(){
+
+        $title=request('title');
+        $description=request('description');
+        $posted_by=request('posted_by');
+        // dd($title,$description,$posted_by);  
+        
+        return to_route('posts.show',1);  
+      }
+
+      public function destroy(){
+         
+        return(to_route('posts.index'));
+      }
+
 }
