@@ -9,10 +9,10 @@
   <div class="card-body">
     <figure>
       <blockquote class="blockquote">
-        <p>Title:{{ $post['title'] }} </p>
+        <p>Title:{{ $post->title }} </p>
       </blockquote>
       <figcaption class="blockquote-footer">
-          <p>Description:{{ $post['description'] }} </p>
+          <p>Description:{{ $post->description }} </p>
       </figcaption>
     </figure>
   </div>
@@ -26,11 +26,11 @@
   <div class="card-body">
     <figure>
       <blockquote class="blockquote">
-        <p>Name:{{ $post['posted_by'] }}</p>
+        <p>Name:{{ $post->posted_by }}</p>
       </blockquote>
       <figcaption class="blockquote-footer">
-        <p>Created At: {{ $post['created_at'] }}</p>
-    </figcaption>
+        <p>Created At: {{ $post->created_at }}</p>
+      </figcaption>
     </figure>
   </div>
 @endsection

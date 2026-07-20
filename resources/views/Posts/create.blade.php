@@ -19,9 +19,9 @@
     <label class="form-label">Post Creator</label>
     <select class="form-select" aria-label="Default select example" name="posted_by">
         <option selected>Open this select menu</option>
-        <option value="1">mhmd</option>
-        <option value="2">ahmed</option>
-        <option value="3">ali</option>
+        @foreach($users as $user)
+        <option value="{{ $user->id }}">{{ $user->name }}</option>
+        @endforeach
       </select>
 </div>
 
