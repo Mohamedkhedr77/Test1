@@ -15,7 +15,7 @@ class PostController extends Controller
         return view('posts.index',['posts'=>$postsfromdb]);
     }
 
-    public function show(post $post){
+    public function show(post $post){   
     
         // $siglepostfromdb=post::findOrFail($postId);
         
@@ -39,7 +39,9 @@ class PostController extends Controller
         $title=request()->title;
         $description=request()->description;
         $posted_by=request()->posted_by;
+        
         $post=new post();
+        
         $post->title=$title;
         $post->description=$description;
         $post->posted_by=$posted_by;
@@ -57,26 +59,32 @@ class PostController extends Controller
     }
 
 
-    public function edit(){
-
-          $post=post::all();
-          $user=user::all();
-       return view('posts.edit',['post'=>$post,'users'=>$user]);
+    public function edit(post $post){
+      
+          $users=user::all();
+       return view('posts.edit',['post'=>$post,'users'=>$users]);
     }
-    public function update( $postId){
 
-        $title=request('title');
-        $description=request('description');
-        $posted_by=request('posted_by');
+    public function update($postId){  
+
+        $title=request()->title;
+        $description=request()->description;
+        $posted_by=request()->posted_by;
         // dd($title,$description,$posted_by);  
         $siglepostfromdb=post::findOrFail($postId);
-        return to_route('posts.show');  
+        $post=new post();
+        $post->title=$title;
+        $post->description=$description;
+        $post->posted_by=$posted_by;
+
+
+        return to_route('posts.show',$postId);  
       }
 
       public function destroy(){
            
 
-
+          
         return(to_route('posts.index'));
       }
 
